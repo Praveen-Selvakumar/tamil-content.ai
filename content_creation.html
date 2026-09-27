@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
 
     <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
 
     <title>VANIKIO — Create Content</title>
@@ -690,10 +690,12 @@
 <header class="navbar">
 
     <a
-            href="index.html"
-            class="logo"
+        href="index.html"
+        class="logo"
     >
+
         VANI<span>KIO</span>
+
     </a>
 
 
@@ -751,8 +753,8 @@
 
 
             <textarea
-                    id="topic"
-                    placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
+                id="topic"
+                placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
             ></textarea>
 
 
@@ -841,8 +843,8 @@
 
 
                 <button
-                        class="generate"
-                        id="generateBtn"
+                    class="generate"
+                    id="generateBtn"
                 >
 
                     ✨ Generate Content
@@ -851,8 +853,8 @@
 
 
                 <button
-                        class="save-prompt"
-                        id="savePromptBtn"
+                    class="save-prompt"
+                    id="savePromptBtn"
                 >
 
                     💾 Save Prompt
@@ -872,8 +874,8 @@
         ================================================== -->
 
         <section
-                class="result"
-                id="result"
+            class="result"
+            id="result"
         >
 
 
@@ -892,8 +894,8 @@
                 </h3>
 
                 <div
-                        id="hooks"
-                        class="result-content"
+                    id="hooks"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -905,12 +907,12 @@
             <div class="result-card">
 
                 <h3>
-                    🎙️ Tamil Script
+                    🎙️ Script
                 </h3>
 
                 <div
-                        id="script"
-                        class="result-content"
+                    id="script"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -926,8 +928,8 @@
                 </h3>
 
                 <div
-                        id="scenes"
-                        class="result-content"
+                    id="scenes"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -943,8 +945,8 @@
                 </h3>
 
                 <div
-                        id="caption"
-                        class="result-content"
+                    id="caption"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -960,8 +962,8 @@
                 </h3>
 
                 <div
-                        id="thumbnail"
-                        class="result-content"
+                    id="thumbnail"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -977,8 +979,8 @@
                 </h3>
 
                 <div
-                        id="titles"
-                        class="result-content"
+                    id="titles"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -994,8 +996,8 @@
                 </h3>
 
                 <div
-                        id="hashtags"
-                        class="result-content"
+                    id="hashtags"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -1011,8 +1013,8 @@
                 </h3>
 
                 <div
-                        id="ideas"
-                        class="result-content"
+                    id="ideas"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -1031,8 +1033,8 @@
 ========================================================= -->
 
 <div
-        class="modal-backdrop"
-        id="modalBackdrop"
+    class="modal-backdrop"
+    id="modalBackdrop"
 >
 
 
@@ -1040,13 +1042,13 @@
 
 
         <div
-                class="modal-icon loading"
-                id="modalIcon"
+            class="modal-icon loading"
+            id="modalIcon"
         >
 
             <div
-                    class="spinner"
-                    id="spinner"
+                class="spinner"
+                id="spinner"
             ></div>
 
         </div>
@@ -1058,20 +1060,20 @@
 
 
         <p id="modalMessage">
-            VANIKIO is working on your Tamil content...
+            VANIKIO is working on your content...
         </p>
 
 
         <div
-                class="error-details"
-                id="errorDetails"
+            class="error-details"
+            id="errorDetails"
         ></div>
 
 
         <button
-                class="modal-button"
-                id="modalButton"
-                style="display:none;"
+            class="modal-button"
+            id="modalButton"
+            style="display:none;"
         >
             Continue
         </button>
@@ -1134,6 +1136,7 @@
         document.getElementById(
             "result"
         );
+
 
 
     // ========================================================
@@ -1224,7 +1227,6 @@
             showLoadingModal();
 
 
-
             generateBtn.disabled =
                 true;
 
@@ -1237,7 +1239,7 @@
                 // AI PROMPT
                 // ===========================================
 
-          const prompt=`Create bilingual Tamil creator content.
+                const prompt=`Create bilingual Tamil creator content.
 
 Idea:${userTopic}
 Platform:${platform.value}
@@ -1275,6 +1277,7 @@ Return ONLY valid JSON. No markdown.
 "ideas":["...","...","...","...","..."]
 }
 }`;
+
 
 
                 // ===========================================
@@ -1433,77 +1436,210 @@ Return ONLY valid JSON. No markdown.
     ) {
 
 
+        const english =
+            data.english || {};
+
+
+        const tamil =
+            data.tamil || {};
+
+
+
+        // ================================================
+        // Hooks
+        // ================================================
+
         document.getElementById(
             "hooks"
         ).textContent =
+
+            "ENGLISH\n\n" +
+
             formatList(
-                data.hooks
+                english.hooks
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            formatList(
+                tamil.hooks
             );
 
+
+
+        // ================================================
+        // Script
+        // ================================================
 
         document.getElementById(
             "script"
         ).textContent =
-            data.script ||
-            "";
 
+            "ENGLISH\n\n" +
+
+            (
+                english.script ||
+                ""
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            (
+                tamil.script ||
+                ""
+            );
+
+
+
+        // ================================================
+        // Scenes
+        // ================================================
 
         document.getElementById(
             "scenes"
         ).textContent =
+
+            "ENGLISH\n\n" +
+
             formatList(
-                data.scenes
+                english.scenes
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            formatList(
+                tamil.scenes
             );
 
+
+
+        // ================================================
+        // Caption
+        // ================================================
 
         document.getElementById(
             "caption"
         ).textContent =
-            data.caption ||
-            "";
 
+            "ENGLISH\n\n" +
+
+            (
+                english.caption ||
+                ""
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            (
+                tamil.caption ||
+                ""
+            );
+
+
+
+        // ================================================
+        // Thumbnail
+        // ================================================
 
         document.getElementById(
             "thumbnail"
         ).textContent =
+
+            "ENGLISH\n\n" +
+
             formatList(
-                data.thumbnail
+                english.thumbnail
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            formatList(
+                tamil.thumbnail
             );
 
+
+
+        // ================================================
+        // Titles
+        // ================================================
 
         document.getElementById(
             "titles"
         ).textContent =
+
+            "ENGLISH\n\n" +
+
             formatList(
-                data.titles
+                english.titles
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            formatList(
+                tamil.titles
             );
 
+
+
+        // ================================================
+        // Hashtags
+        // ================================================
 
         document.getElementById(
             "hashtags"
         ).textContent =
+
+            "ENGLISH\n\n" +
+
             formatList(
-                data.hashtags
+                english.hashtags
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            formatList(
+                tamil.hashtags
             );
 
+
+
+        // ================================================
+        // Follow-up Ideas
+        // ================================================
 
         document.getElementById(
             "ideas"
         ).textContent =
+
+            "ENGLISH\n\n" +
+
             formatList(
-                data.ideas
+                english.ideas
+            ) +
+
+            "\n\n\nTAMIL\n\n" +
+
+            formatList(
+                tamil.ideas
             );
 
 
-        // Show result only after successful AI generation.
+
+        // ================================================
+        // Show Result
+        // ================================================
 
         result.style.display =
             "block";
 
 
-        // Scroll to generated content.
+
+        // ================================================
+        // Scroll
+        // ================================================
 
         setTimeout(
+
             () => {
 
                 result.scrollIntoView({
@@ -1517,7 +1653,9 @@ Return ONLY valid JSON. No markdown.
                 });
 
             },
+
             100
+
         );
 
     }
@@ -1541,7 +1679,9 @@ Return ONLY valid JSON. No markdown.
 
 
         return items
+
             .map(
+
                 (
                     item,
                     index
@@ -1550,7 +1690,9 @@ Return ONLY valid JSON. No markdown.
                     return `${index + 1}. ${item}`;
 
                 }
+
             )
+
             .join(
                 "\n\n"
             );
@@ -1618,12 +1760,21 @@ Return ONLY valid JSON. No markdown.
             "block";
 
 
+        modalIcon.textContent =
+            "";
+
+
+        modalIcon.appendChild(
+            spinner
+        );
+
+
         modalTitle.textContent =
             "Creating your content";
 
 
         modalMessage.textContent =
-            "VANIKIO is generating your Tamil content. Please wait...";
+            "VANIKIO is generating your bilingual content. Please wait...";
 
 
         errorDetails.style.display =
@@ -1666,7 +1817,7 @@ Return ONLY valid JSON. No markdown.
 
 
         modalMessage.textContent =
-            "Your Tamil content is ready below.";
+            "Your English and Tamil content is ready below.";
 
 
         errorDetails.style.display =
@@ -1726,7 +1877,7 @@ Return ONLY valid JSON. No markdown.
 
 
         modalIcon.textContent =
-            "!" ;
+            "!";
 
 
         modalTitle.textContent =
@@ -1797,8 +1948,13 @@ Return ONLY valid JSON. No markdown.
         (event) => {
 
             if (
+
                 event.key === "Escape" &&
-                modalBackdrop.classList.contains("show")
+
+                modalBackdrop.classList.contains(
+                    "show"
+                )
+
             ) {
 
                 closeModal();
@@ -1836,6 +1992,7 @@ Return ONLY valid JSON. No markdown.
             incomingPrompt;
 
     }
+
 
 </script>
 
