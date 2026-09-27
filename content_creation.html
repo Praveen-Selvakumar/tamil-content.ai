@@ -1237,31 +1237,44 @@
                 // AI PROMPT
                 // ===========================================
 
-          const prompt=`Create concise bilingual Tamil creator content.
+          const prompt=`Create bilingual Tamil creator content.
 
 Idea:${userTopic}
 Platform:${platform.value}
 Style:${style.value}
 
-Every generated text MUST contain BOTH simple English and natural spoken Tamil.
-Format each item: English / தமிழ்
-Do not generate English-only or Tamil-only text.
-Keep all output short, useful and engaging.
-Script: suitable for ~60 seconds.
+Generate TWO separate language sections: English and Tamil.
+Do NOT mix languages in the same item.
+Tamil must be natural spoken Tamil, not formal/literary.
+
+Keep content concise and engaging.
+Script should suit a 60-second short video.
 No invented facts, statistics, quotes or claims.
+Generate MANY hooks and MANY relevant hashtags.
 Return ONLY valid JSON. No markdown.
 
 {
-"hooks":["English / தமிழ்","English / தமிழ்","English / தமிழ்"],
-"script":"English / தமிழ்...",
-"scenes":["English / தமிழ்","English / தமிழ்","English / தமிழ்"],
-"caption":"English / தமிழ்",
-"thumbnail":["English / தமிழ்","English / தமிழ்"],
-"titles":["English / தமிழ்","English / தமிழ்","English / தமிழ்"],
-"hashtags":["#TamilCreator","#ContentCreator"],
-"ideas":["English / தமிழ்","English / தமிழ்","English / தமிழ்"]
+"english":{
+"hooks":["...","...","...","...","...","...","...","...","...","..."],
+"script":"...",
+"scenes":["...","...","...","...","..."],
+"caption":"...",
+"thumbnail":["...","...","...","...","..."],
+"titles":["...","...","...","...","..."],
+"hashtags":["#...","#...","#...","#...","#...","#...","#...","#...","#...","#..."],
+"ideas":["...","...","...","...","..."]
+},
+"tamil":{
+"hooks":["...","...","...","...","...","...","...","...","...","..."],
+"script":"...",
+"scenes":["...","...","...","...","..."],
+"caption":"...",
+"thumbnail":["...","...","...","...","..."],
+"titles":["...","...","...","...","..."],
+"hashtags":["#...","#...","#...","#...","#...","#...","#...","#...","#...","#..."],
+"ideas":["...","...","...","...","..."]
+}
 }`;
-
 
 
                 // ===========================================
