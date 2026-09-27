@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
 
     <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
     >
 
     <title>VANIKIO — Create Content</title>
@@ -690,12 +690,10 @@
 <header class="navbar">
 
     <a
-        href="index.html"
-        class="logo"
+            href="index.html"
+            class="logo"
     >
-
         VANI<span>KIO</span>
-
     </a>
 
 
@@ -753,8 +751,8 @@
 
 
             <textarea
-                id="topic"
-                placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
+                    id="topic"
+                    placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
             ></textarea>
 
 
@@ -843,8 +841,8 @@
 
 
                 <button
-                    class="generate"
-                    id="generateBtn"
+                        class="generate"
+                        id="generateBtn"
                 >
 
                     ✨ Generate Content
@@ -853,8 +851,8 @@
 
 
                 <button
-                    class="save-prompt"
-                    id="savePromptBtn"
+                        class="save-prompt"
+                        id="savePromptBtn"
                 >
 
                     💾 Save Prompt
@@ -874,8 +872,8 @@
         ================================================== -->
 
         <section
-            class="result"
-            id="result"
+                class="result"
+                id="result"
         >
 
 
@@ -894,8 +892,8 @@
                 </h3>
 
                 <div
-                    id="hooks"
-                    class="result-content"
+                        id="hooks"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -907,12 +905,12 @@
             <div class="result-card">
 
                 <h3>
-                    🎙️ Script
+                    🎙️ Tamil Script
                 </h3>
 
                 <div
-                    id="script"
-                    class="result-content"
+                        id="script"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -928,8 +926,8 @@
                 </h3>
 
                 <div
-                    id="scenes"
-                    class="result-content"
+                        id="scenes"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -945,8 +943,8 @@
                 </h3>
 
                 <div
-                    id="caption"
-                    class="result-content"
+                        id="caption"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -962,8 +960,8 @@
                 </h3>
 
                 <div
-                    id="thumbnail"
-                    class="result-content"
+                        id="thumbnail"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -979,8 +977,8 @@
                 </h3>
 
                 <div
-                    id="titles"
-                    class="result-content"
+                        id="titles"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -996,8 +994,8 @@
                 </h3>
 
                 <div
-                    id="hashtags"
-                    class="result-content"
+                        id="hashtags"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -1013,8 +1011,8 @@
                 </h3>
 
                 <div
-                    id="ideas"
-                    class="result-content"
+                        id="ideas"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -1033,8 +1031,8 @@
 ========================================================= -->
 
 <div
-    class="modal-backdrop"
-    id="modalBackdrop"
+        class="modal-backdrop"
+        id="modalBackdrop"
 >
 
 
@@ -1042,13 +1040,13 @@
 
 
         <div
-            class="modal-icon loading"
-            id="modalIcon"
+                class="modal-icon loading"
+                id="modalIcon"
         >
 
             <div
-                class="spinner"
-                id="spinner"
+                    class="spinner"
+                    id="spinner"
             ></div>
 
         </div>
@@ -1060,20 +1058,20 @@
 
 
         <p id="modalMessage">
-            VANIKIO is working on your content...
+            VANIKIO is working on your Tamil content...
         </p>
 
 
         <div
-            class="error-details"
-            id="errorDetails"
+                class="error-details"
+                id="errorDetails"
         ></div>
 
 
         <button
-            class="modal-button"
-            id="modalButton"
-            style="display:none;"
+                class="modal-button"
+                id="modalButton"
+                style="display:none;"
         >
             Continue
         </button>
@@ -1136,7 +1134,6 @@
         document.getElementById(
             "result"
         );
-
 
 
     // ========================================================
@@ -1227,6 +1224,7 @@
             showLoadingModal();
 
 
+
             generateBtn.disabled =
                 true;
 
@@ -1239,44 +1237,112 @@
                 // AI PROMPT
                 // ===========================================
 
-                const prompt=`Create bilingual Tamil creator content.
+                const prompt = `
 
-Idea:${userTopic}
-Platform:${platform.value}
-Style:${style.value}
+You are VANIKIO, an AI assistant specifically designed
+for Tamil content creators.
 
-Generate TWO separate language sections: English and Tamil.
-Do NOT mix languages in the same item.
-Tamil must be natural spoken Tamil, not formal/literary.
+The creator wants to create content about:
 
-Keep content concise and engaging.
-Script should suit a 60-second short video.
-No invented facts, statistics, quotes or claims.
-Generate MANY hooks and MANY relevant hashtags.
-Return ONLY valid JSON. No markdown.
+${userTopic}
+
+Platform:
+
+${platform.value}
+
+Content style:
+
+${style.value}
+
+
+Your job is to transform this idea into a complete
+Tamil creator content package.
+
+
+IMPORTANT RULES:
+
+1. Write natural spoken Tamil.
+
+2. Do not use overly formal or literary Tamil.
+
+3. Make the content sound like a real Tamil creator
+   speaking to their audience.
+
+4. Tamil + English words are allowed when natural.
+
+5. Do not invent statistics, facts, studies, numbers,
+   quotes or claims.
+
+6. Keep the content useful and engaging.
+
+7. The script should be approximately suitable for
+   a 60-second short-form video.
+
+8. Hooks should be different from each other.
+
+9. Scene suggestions should tell the creator what
+   they could show while speaking.
+
+10. Follow-up ideas should logically relate to the
+    original topic.
+
+
+RETURN ONLY VALID JSON.
+
+DO NOT use markdown.
+
+DO NOT put the JSON inside a code block.
+
+Use exactly this structure:
+
 
 {
-"english":{
-"hooks":["...","...","...","...","...","...","...","...","...","..."],
-"script":"...",
-"scenes":["...","...","...","...","..."],
-"caption":"...",
-"thumbnail":["...","...","...","...","..."],
-"titles":["...","...","...","...","..."],
-"hashtags":["#...","#...","#...","#...","#...","#...","#...","#...","#...","#..."],
-"ideas":["...","...","...","...","..."]
-},
-"tamil":{
-"hooks":["...","...","...","...","...","...","...","...","...","..."],
-"script":"...",
-"scenes":["...","...","...","...","..."],
-"caption":"...",
-"thumbnail":["...","...","...","...","..."],
-"titles":["...","...","...","...","..."],
-"hashtags":["#...","#...","#...","#...","#...","#...","#...","#...","#...","#..."],
-"ideas":["...","...","...","...","..."]
+    "hooks": [
+        "Hook 1",
+        "Hook 2",
+        "Hook 3",
+        "Hook 4",
+        "Hook 5"
+    ],
+
+    "script": "60 second natural spoken Tamil script",
+
+    "scenes": [
+        "Scene 1",
+        "Scene 2",
+        "Scene 3",
+        "Scene 4",
+        "Scene 5"
+    ],
+
+    "caption": "Tamil social media caption",
+
+    "thumbnail": [
+        "Thumbnail text 1",
+        "Thumbnail text 2",
+        "Thumbnail text 3"
+    ],
+
+    "titles": [
+        "Title 1",
+        "Title 2",
+        "Title 3"
+    ],
+
+    "hashtags": [
+        "#Tamil",
+        "#TamilCreator",
+        "#RelevantHashtag"
+    ],
+
+    "ideas": [
+        "Follow-up idea 1",
+        "Follow-up idea 2",
+        "Follow-up idea 3"
+    ]
 }
-}`;
+
+`;
 
 
 
@@ -1436,210 +1502,77 @@ Return ONLY valid JSON. No markdown.
     ) {
 
 
-        const english =
-            data.english || {};
-
-
-        const tamil =
-            data.tamil || {};
-
-
-
-        // ================================================
-        // Hooks
-        // ================================================
-
         document.getElementById(
             "hooks"
         ).textContent =
-
-            "ENGLISH\n\n" +
-
             formatList(
-                english.hooks
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            formatList(
-                tamil.hooks
+                data.hooks
             );
 
-
-
-        // ================================================
-        // Script
-        // ================================================
 
         document.getElementById(
             "script"
         ).textContent =
+            data.script ||
+            "";
 
-            "ENGLISH\n\n" +
-
-            (
-                english.script ||
-                ""
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            (
-                tamil.script ||
-                ""
-            );
-
-
-
-        // ================================================
-        // Scenes
-        // ================================================
 
         document.getElementById(
             "scenes"
         ).textContent =
-
-            "ENGLISH\n\n" +
-
             formatList(
-                english.scenes
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            formatList(
-                tamil.scenes
+                data.scenes
             );
 
-
-
-        // ================================================
-        // Caption
-        // ================================================
 
         document.getElementById(
             "caption"
         ).textContent =
+            data.caption ||
+            "";
 
-            "ENGLISH\n\n" +
-
-            (
-                english.caption ||
-                ""
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            (
-                tamil.caption ||
-                ""
-            );
-
-
-
-        // ================================================
-        // Thumbnail
-        // ================================================
 
         document.getElementById(
             "thumbnail"
         ).textContent =
-
-            "ENGLISH\n\n" +
-
             formatList(
-                english.thumbnail
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            formatList(
-                tamil.thumbnail
+                data.thumbnail
             );
 
-
-
-        // ================================================
-        // Titles
-        // ================================================
 
         document.getElementById(
             "titles"
         ).textContent =
-
-            "ENGLISH\n\n" +
-
             formatList(
-                english.titles
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            formatList(
-                tamil.titles
+                data.titles
             );
 
-
-
-        // ================================================
-        // Hashtags
-        // ================================================
 
         document.getElementById(
             "hashtags"
         ).textContent =
-
-            "ENGLISH\n\n" +
-
             formatList(
-                english.hashtags
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            formatList(
-                tamil.hashtags
+                data.hashtags
             );
 
-
-
-        // ================================================
-        // Follow-up Ideas
-        // ================================================
 
         document.getElementById(
             "ideas"
         ).textContent =
-
-            "ENGLISH\n\n" +
-
             formatList(
-                english.ideas
-            ) +
-
-            "\n\n\nTAMIL\n\n" +
-
-            formatList(
-                tamil.ideas
+                data.ideas
             );
 
 
-
-        // ================================================
-        // Show Result
-        // ================================================
+        // Show result only after successful AI generation.
 
         result.style.display =
             "block";
 
 
-
-        // ================================================
-        // Scroll
-        // ================================================
+        // Scroll to generated content.
 
         setTimeout(
-
             () => {
 
                 result.scrollIntoView({
@@ -1653,9 +1586,7 @@ Return ONLY valid JSON. No markdown.
                 });
 
             },
-
             100
-
         );
 
     }
@@ -1679,9 +1610,7 @@ Return ONLY valid JSON. No markdown.
 
 
         return items
-
             .map(
-
                 (
                     item,
                     index
@@ -1690,9 +1619,7 @@ Return ONLY valid JSON. No markdown.
                     return `${index + 1}. ${item}`;
 
                 }
-
             )
-
             .join(
                 "\n\n"
             );
@@ -1760,21 +1687,12 @@ Return ONLY valid JSON. No markdown.
             "block";
 
 
-        modalIcon.textContent =
-            "";
-
-
-        modalIcon.appendChild(
-            spinner
-        );
-
-
         modalTitle.textContent =
             "Creating your content";
 
 
         modalMessage.textContent =
-            "VANIKIO is generating your bilingual content. Please wait...";
+            "VANIKIO is generating your Tamil content. Please wait...";
 
 
         errorDetails.style.display =
@@ -1817,7 +1735,7 @@ Return ONLY valid JSON. No markdown.
 
 
         modalMessage.textContent =
-            "Your English and Tamil content is ready below.";
+            "Your Tamil content is ready below.";
 
 
         errorDetails.style.display =
@@ -1877,7 +1795,7 @@ Return ONLY valid JSON. No markdown.
 
 
         modalIcon.textContent =
-            "!";
+            "!" ;
 
 
         modalTitle.textContent =
@@ -1948,13 +1866,8 @@ Return ONLY valid JSON. No markdown.
         (event) => {
 
             if (
-
                 event.key === "Escape" &&
-
-                modalBackdrop.classList.contains(
-                    "show"
-                )
-
+                modalBackdrop.classList.contains("show")
             ) {
 
                 closeModal();
@@ -1992,7 +1905,6 @@ Return ONLY valid JSON. No markdown.
             incomingPrompt;
 
     }
-
 
 </script>
 
