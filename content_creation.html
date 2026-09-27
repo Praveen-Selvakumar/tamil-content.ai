@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
 
     <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
 
     <title>VANIKIO — Create Content</title>
@@ -690,8 +690,8 @@
 <header class="navbar">
 
     <a
-            href="index.html"
-            class="logo"
+        href="index.html"
+        class="logo"
     >
         VANI<span>KIO</span>
     </a>
@@ -751,8 +751,8 @@
 
 
             <textarea
-                    id="topic"
-                    placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
+                id="topic"
+                placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
             ></textarea>
 
 
@@ -841,8 +841,8 @@
 
 
                 <button
-                        class="generate"
-                        id="generateBtn"
+                    class="generate"
+                    id="generateBtn"
                 >
 
                     ✨ Generate Content
@@ -851,8 +851,8 @@
 
 
                 <button
-                        class="save-prompt"
-                        id="savePromptBtn"
+                    class="save-prompt"
+                    id="savePromptBtn"
                 >
 
                     💾 Save Prompt
@@ -872,8 +872,8 @@
         ================================================== -->
 
         <section
-                class="result"
-                id="result"
+            class="result"
+            id="result"
         >
 
 
@@ -892,8 +892,8 @@
                 </h3>
 
                 <div
-                        id="hooks"
-                        class="result-content"
+                    id="hooks"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -909,8 +909,8 @@
                 </h3>
 
                 <div
-                        id="script"
-                        class="result-content"
+                    id="script"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -926,8 +926,8 @@
                 </h3>
 
                 <div
-                        id="scenes"
-                        class="result-content"
+                    id="scenes"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -943,8 +943,8 @@
                 </h3>
 
                 <div
-                        id="caption"
-                        class="result-content"
+                    id="caption"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -960,8 +960,8 @@
                 </h3>
 
                 <div
-                        id="thumbnail"
-                        class="result-content"
+                    id="thumbnail"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -977,8 +977,8 @@
                 </h3>
 
                 <div
-                        id="titles"
-                        class="result-content"
+                    id="titles"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -994,8 +994,8 @@
                 </h3>
 
                 <div
-                        id="hashtags"
-                        class="result-content"
+                    id="hashtags"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -1011,8 +1011,8 @@
                 </h3>
 
                 <div
-                        id="ideas"
-                        class="result-content"
+                    id="ideas"
+                    class="result-content"
                 ></div>
 
             </div>
@@ -1031,8 +1031,8 @@
 ========================================================= -->
 
 <div
-        class="modal-backdrop"
-        id="modalBackdrop"
+    class="modal-backdrop"
+    id="modalBackdrop"
 >
 
 
@@ -1040,13 +1040,13 @@
 
 
         <div
-                class="modal-icon loading"
-                id="modalIcon"
+            class="modal-icon loading"
+            id="modalIcon"
         >
 
             <div
-                    class="spinner"
-                    id="spinner"
+                class="spinner"
+                id="spinner"
             ></div>
 
         </div>
@@ -1063,15 +1063,15 @@
 
 
         <div
-                class="error-details"
-                id="errorDetails"
+            class="error-details"
+            id="errorDetails"
         ></div>
 
 
         <button
-                class="modal-button"
-                id="modalButton"
-                style="display:none;"
+            class="modal-button"
+            id="modalButton"
+            style="display:none;"
         >
             Continue
         </button>
@@ -1286,23 +1286,6 @@ IMPORTANT RULES:
 10. Follow-up ideas should logically relate to the
     original topic.
 
-11. Generate exactly 10 different hooks for each language.
-
-12. Generate exactly 10 relevant hashtags for each language.
-
-13. Generate content in TWO separate sections.
-
-14. TAMIL section must come FIRST.
-
-15. ENGLISH section must come AFTER the TAMIL section.
-
-16. Do NOT mix Tamil and English versions in the same item.
-
-17. English content should communicate the same idea naturally
-    in English, not be a word-for-word translation.
-
-18. Tamil content should be natural spoken Tamil.
-
 
 RETURN ONLY VALID JSON.
 
@@ -1314,121 +1297,49 @@ Use exactly this structure:
 
 
 {
-    "tamil": {
-        "hooks": [
-            "Hook 1",
-            "Hook 2",
-            "Hook 3",
-            "Hook 4",
-            "Hook 5",
-            "Hook 6",
-            "Hook 7",
-            "Hook 8",
-            "Hook 9",
-            "Hook 10"
-        ],
+    "hooks": [
+        "Hook 1",
+        "Hook 2",
+        "Hook 3",
+        "Hook 4",
+        "Hook 5"
+    ],
 
-        "script": "60 second natural spoken Tamil script",
+    "script": "60 second natural spoken Tamil script",
 
-        "scenes": [
-            "Scene 1",
-            "Scene 2",
-            "Scene 3",
-            "Scene 4",
-            "Scene 5"
-        ],
+    "scenes": [
+        "Scene 1",
+        "Scene 2",
+        "Scene 3",
+        "Scene 4",
+        "Scene 5"
+    ],
 
-        "caption": "Tamil social media caption",
+    "caption": "Tamil social media caption",
 
-        "thumbnail": [
-            "Thumbnail text 1",
-            "Thumbnail text 2",
-            "Thumbnail text 3"
-        ],
+    "thumbnail": [
+        "Thumbnail text 1",
+        "Thumbnail text 2",
+        "Thumbnail text 3"
+    ],
 
-        "titles": [
-            "Title 1",
-            "Title 2",
-            "Title 3"
-        ],
+    "titles": [
+        "Title 1",
+        "Title 2",
+        "Title 3"
+    ],
 
-        "hashtags": [
-            "#Tamil",
-            "#TamilCreator",
-            "#RelevantHashtag1",
-            "#RelevantHashtag2",
-            "#RelevantHashtag3",
-            "#RelevantHashtag4",
-            "#RelevantHashtag5",
-            "#RelevantHashtag6",
-            "#RelevantHashtag7",
-            "#RelevantHashtag8"
-        ],
+    "hashtags": [
+        "#Tamil",
+        "#TamilCreator",
+        "#RelevantHashtag"
+    ],
 
-        "ideas": [
-            "Follow-up idea 1",
-            "Follow-up idea 2",
-            "Follow-up idea 3"
-        ]
-    },
-
-    "english": {
-        "hooks": [
-            "Hook 1",
-            "Hook 2",
-            "Hook 3",
-            "Hook 4",
-            "Hook 5",
-            "Hook 6",
-            "Hook 7",
-            "Hook 8",
-            "Hook 9",
-            "Hook 10"
-        ],
-
-        "script": "60 second natural English script",
-
-        "scenes": [
-            "Scene 1",
-            "Scene 2",
-            "Scene 3",
-            "Scene 4",
-            "Scene 5"
-        ],
-
-        "caption": "English social media caption",
-
-        "thumbnail": [
-            "Thumbnail text 1",
-            "Thumbnail text 2",
-            "Thumbnail text 3"
-        ],
-
-        "titles": [
-            "Title 1",
-            "Title 2",
-            "Title 3"
-        ],
-
-        "hashtags": [
-            "#Creator",
-            "#ContentCreator",
-            "#RelevantHashtag1",
-            "#RelevantHashtag2",
-            "#RelevantHashtag3",
-            "#RelevantHashtag4",
-            "#RelevantHashtag5",
-            "#RelevantHashtag6",
-            "#RelevantHashtag7",
-            "#RelevantHashtag8"
-        ],
-
-        "ideas": [
-            "Follow-up idea 1",
-            "Follow-up idea 2",
-            "Follow-up idea 3"
-        ]
-    }
+    "ideas": [
+        "Follow-up idea 1",
+        "Follow-up idea 2",
+        "Follow-up idea 3"
+    ]
 }
 
 `;
