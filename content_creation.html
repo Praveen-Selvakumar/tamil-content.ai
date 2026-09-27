@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VANIKIO — Create Content</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #f7f5ff;
+
+            color: #27243a;
+
+        }
+
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            height: 70px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            border-bottom: 1px solid #eeeaf8;
+
+        }
+
+
+        .logo {
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+        }
+
+
+        .logo span {
+
+            color: #6c4cf1;
+
+        }
+
+
+        .nav {
+
+            display: flex;
+
+            gap: 24px;
+
+        }
+
+
+        .nav a {
+
+            font-size: 14px;
+
+            color: #625c70;
+
+        }
+
+
+        .nav a:hover {
+
+            color: #6c4cf1;
+
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width: min(1000px, 90%);
+
+            margin: auto;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .page-header {
+
+            text-align: center;
+
+            padding: 55px 0 35px;
+
+        }
+
+
+        .page-header h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .page-header p {
+
+            color: #6b6577;
+
+        }
+
+
+        /* =====================================================
+           CREATOR BOX
+        ===================================================== */
+
+        .creator-box {
+
+            background: white;
+
+            border: 1px solid #eeeaf8;
+
+            border-radius: 22px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 10px 30px rgba(60, 45, 100, 0.04);
+
+        }
+
+
+        label {
+
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        textarea {
+
+            width: 100%;
+
+            min-height: 150px;
+
+            resize: vertical;
+
+            border: 1px solid #ddd8eb;
+
+            border-radius: 14px;
+
+            padding: 16px;
+
+            font-family: inherit;
+
+            font-size: 16px;
+
+            color: #27243a;
+
+            outline: none;
+
+        }
+
+
+        textarea:focus {
+
+            border-color: #6c4cf1;
+
+            box-shadow:
+                0 0 0 3px #ece7ff;
+
+        }
+
+
+        /* =====================================================
+           OPTIONS
+        ===================================================== */
+
+        .options {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+            margin-top: 20px;
+
+        }
+
+
+        select {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd8eb;
+
+            border-radius: 12px;
+
+            background: white;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            outline: none;
+
+        }
+
+
+        select:focus {
+
+            border-color: #6c4cf1;
+
+        }
+
+
+        /* =====================================================
+           ACTIONS
+        ===================================================== */
+
+        .actions {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 20px;
+
+        }
+
+
+        button {
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 14px 20px;
+
+            border-radius: 12px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+        }
+
+
+        .generate {
+
+            background: #6c4cf1;
+
+            color: white;
+
+            flex: 1;
+
+        }
+
+
+        .generate:hover {
+
+            background: #5938dc;
+
+        }
+
+
+        .generate:disabled {
+
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        .save-prompt {
+
+            background: #ece7ff;
+
+            color: #5938dc;
+
+        }
+
+
+        .save-prompt:hover {
+
+            background: #e3dcff;
+
+        }
+
+
+        /* =====================================================
+           RESULT
+        ===================================================== */
+
+        .result {
+
+            display: none;
+
+            margin-top: 35px;
+
+            padding-bottom: 60px;
+
+        }
+
+
+        .result-title {
+
+            font-size: 24px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .result-card {
+
+            background: white;
+
+            border: 1px solid #eeeaf8;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .result-card h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .result-content {
+
+            white-space: pre-wrap;
+
+            line-height: 1.7;
+
+            color: #514b60;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           MODAL BACKDROP
+        ===================================================== */
+
+        .modal-backdrop {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(39, 36, 58, 0.45);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 9999;
+
+            backdrop-filter: blur(4px);
+
+        }
+
+
+        .modal-backdrop.show {
+
+            display: flex;
+
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+
+            width: min(420px, 100%);
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px rgba(30, 20, 60, 0.20);
+
+            animation:
+                modalIn 0.2s ease;
+
+        }
+
+
+        @keyframes modalIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px)
+                    scale(0.98);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MODAL ICON
+        ===================================================== */
+
+        .modal-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 27px;
+
+        }
+
+
+        .modal-icon.loading {
+
+            background: #ece7ff;
+
+        }
+
+
+        .modal-icon.success {
+
+            background: #eafaf0;
+
+        }
+
+
+        .modal-icon.error {
+
+            background: #fff0f0;
+
+        }
+
+
+        /* =====================================================
+           SPINNER
+        ===================================================== */
+
+        .spinner {
+
+            width: 25px;
+
+            height: 25px;
+
+            border: 3px solid #dcd4ff;
+
+            border-top-color: #6c4cf1;
+
+            border-radius: 50%;
+
+            animation:
+                spin 0.8s linear infinite;
+
+        }
+
+
+        @keyframes spin {
+
+            to {
+
+                transform: rotate(360deg);
+
+            }
+
+        }
+
+
+        .modal h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .modal p {
+
+            color: #6b6577;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .modal-button {
+
+            width: 100%;
+
+            margin-top: 22px;
+
+            background: #6c4cf1;
+
+            color: white;
+
+        }
+
+
+        .modal-button:hover {
+
+            background: #5938dc;
+
+        }
+
+
+        /* =====================================================
+           ERROR DETAILS
+        ===================================================== */
+
+        .error-details {
+
+            margin-top: 12px;
+
+            padding: 10px;
+
+            background: #fff7f7;
+
+            border-radius: 9px;
+
+            font-size: 12px;
+
+            color: #9b2c2c;
+
+            word-break: break-word;
+
+            display: none;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .options {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .actions {
+
+                flex-direction: column;
+
+            }
+
+
+            .generate {
+
+                width: 100%;
+
+            }
+
+
+            .save-prompt {
+
+                width: 100%;
+
+            }
+
+
+            .page-header h1 {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        VANI<span>KIO</span>
+    </a>
+
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="prompts.html">
+            My Prompts
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+    <div class="container">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="page-header">
+
+            <h1>
+                Create Content
+            </h1>
+
+            <p>
+                Give VANIKIO your idea. We'll build the content.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CREATOR INPUT
+        ================================================== -->
+
+        <section class="creator-box">
+
+
+            <label for="topic">
+
+                What do you want to talk about?
+
+            </label>
+
+
+            <textarea
+                id="topic"
+                placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
+            ></textarea>
+
+
+
+            <!-- =============================================
+                 OPTIONS
+            ============================================== -->
+
+            <div class="options">
+
+
+                <div>
+
+                    <label for="platform">
+                        Platform
+                    </label>
+
+
+                    <select id="platform">
+
+                        <option value="Instagram">
+                            Instagram
+                        </option>
+
+                        <option value="YouTube">
+                            YouTube
+                        </option>
+
+                        <option value="YouTube Shorts">
+                            YouTube Shorts
+                        </option>
+
+                        <option value="Facebook">
+                            Facebook
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div>
+
+                    <label for="style">
+                        Content Style
+                    </label>
+
+
+                    <select id="style">
+
+                        <option value="Natural conversational Tamil">
+                            Natural conversational Tamil
+                        </option>
+
+                        <option value="Casual Tamil">
+                            Casual Tamil
+                        </option>
+
+                        <option value="Professional Tamil">
+                            Professional Tamil
+                        </option>
+
+                        <option value="Tamil + English">
+                            Tamil + English
+                        </option>
+
+                        <option value="Storytelling Tamil">
+                            Storytelling Tamil
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 BUTTONS
+            ============================================== -->
+
+            <div class="actions">
+
+
+                <button
+                    class="generate"
+                    id="generateBtn"
+                >
+
+                    ✨ Generate Content
+
+                </button>
+
+
+                <button
+                    class="save-prompt"
+                    id="savePromptBtn"
+                >
+
+                    💾 Save Prompt
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESULT
+        ================================================== -->
+
+        <section
+            class="result"
+            id="result"
+        >
+
+
+            <h2 class="result-title">
+                Your Content
+            </h2>
+
+
+
+            <!-- Hooks -->
+
+            <div class="result-card">
+
+                <h3>
+                    🔥 Hooks
+                </h3>
+
+                <div
+                    id="hooks"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+
+            <!-- Script -->
+
+            <div class="result-card">
+
+                <h3>
+                    🎙️ Tamil Script
+                </h3>
+
+                <div
+                    id="script"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+
+            <!-- Scenes -->
+
+            <div class="result-card">
+
+                <h3>
+                    🎬 Scene Suggestions
+                </h3>
+
+                <div
+                    id="scenes"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+
+            <!-- Caption -->
+
+            <div class="result-card">
+
+                <h3>
+                    📝 Caption
+                </h3>
+
+                <div
+                    id="caption"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+
+            <!-- Thumbnail -->
+
+            <div class="result-card">
+
+                <h3>
+                    🖼️ Thumbnail Text
+                </h3>
+
+                <div
+                    id="thumbnail"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+
+            <!-- Titles -->
+
+            <div class="result-card">
+
+                <h3>
+                    📌 YouTube Titles
+                </h3>
+
+                <div
+                    id="titles"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+
+            <!-- Hashtags -->
+
+            <div class="result-card">
+
+                <h3>
+                    #️⃣ Hashtags
+                </h3>
+
+                <div
+                    id="hashtags"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+
+            <!-- Ideas -->
+
+            <div class="result-card">
+
+                <h3>
+                    🔄 Follow-up Ideas
+                </h3>
+
+                <div
+                    id="ideas"
+                    class="result-content"
+                ></div>
+
+            </div>
+
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     AI STATUS MODAL
+========================================================= -->
+
+<div
+    class="modal-backdrop"
+    id="modalBackdrop"
+>
+
+
+    <div class="modal">
+
+
+        <div
+            class="modal-icon loading"
+            id="modalIcon"
+        >
+
+            <div
+                class="spinner"
+                id="spinner"
+            ></div>
+
+        </div>
+
+
+        <h2 id="modalTitle">
+            Creating your content
+        </h2>
+
+
+        <p id="modalMessage">
+            VANIKIO is working on your Tamil content...
+        </p>
+
+
+        <div
+            class="error-details"
+            id="errorDetails"
+        ></div>
+
+
+        <button
+            class="modal-button"
+            id="modalButton"
+            style="display:none;"
+        >
+            Continue
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script type="module">
+
+
+    // ========================================================
+    // Firebase AI
+    // ========================================================
+
+    import {
+        generateAIContent
+    } from "./firebase.js";
+
+
+
+    // ========================================================
+    // Elements
+    // ========================================================
+
+    const topic =
+        document.getElementById(
+            "topic"
+        );
+
+
+    const platform =
+        document.getElementById(
+            "platform"
+        );
+
+
+    const style =
+        document.getElementById(
+            "style"
+        );
+
+
+    const generateBtn =
+        document.getElementById(
+            "generateBtn"
+        );
+
+
+    const savePromptBtn =
+        document.getElementById(
+            "savePromptBtn"
+        );
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    // ========================================================
+    // Modal Elements
+    // ========================================================
+
+    const modalBackdrop =
+        document.getElementById(
+            "modalBackdrop"
+        );
+
+
+    const modalIcon =
+        document.getElementById(
+            "modalIcon"
+        );
+
+
+    const spinner =
+        document.getElementById(
+            "spinner"
+        );
+
+
+    const modalTitle =
+        document.getElementById(
+            "modalTitle"
+        );
+
+
+    const modalMessage =
+        document.getElementById(
+            "modalMessage"
+        );
+
+
+    const modalButton =
+        document.getElementById(
+            "modalButton"
+        );
+
+
+    const errorDetails =
+        document.getElementById(
+            "errorDetails"
+        );
+
+
+
+    // ========================================================
+    // Generate Button
+    // ========================================================
+
+    generateBtn.addEventListener(
+
+        "click",
+
+        async () => {
+
+
+            const userTopic =
+                topic.value.trim();
+
+
+
+            // -----------------------------------------------
+            // Validate
+            // -----------------------------------------------
+
+            if (!userTopic) {
+
+                showErrorModal(
+                    "Please enter your content idea."
+                );
+
+                topic.focus();
+
+                return;
+
+            }
+
+
+
+            // -----------------------------------------------
+            // Show Loading
+            // -----------------------------------------------
+
+            showLoadingModal();
+
+
+
+            generateBtn.disabled =
+                true;
+
+
+
+            try {
+
+
+                // ===========================================
+                // AI PROMPT
+                // ===========================================
+
+                const prompt = `
+
+You are VANIKIO, an AI assistant specifically designed
+for Tamil content creators.
+
+The creator wants to create content about:
+
+${userTopic}
+
+Platform:
+
+${platform.value}
+
+Content style:
+
+${style.value}
+
+
+Your job is to transform this idea into a complete
+Tamil creator content package.
+
+
+IMPORTANT RULES:
+
+1. Write natural spoken Tamil.
+
+2. Do not use overly formal or literary Tamil.
+
+3. Make the content sound like a real Tamil creator
+   speaking to their audience.
+
+4. Tamil + English words are allowed when natural.
+
+5. Do not invent statistics, facts, studies, numbers,
+   quotes or claims.
+
+6. Keep the content useful and engaging.
+
+7. The script should be approximately suitable for
+   a 60-second short-form video.
+
+8. Hooks should be different from each other.
+
+9. Scene suggestions should tell the creator what
+   they could show while speaking.
+
+10. Follow-up ideas should logically relate to the
+    original topic.
+
+
+RETURN ONLY VALID JSON.
+
+DO NOT use markdown.
+
+DO NOT put the JSON inside a code block.
+
+Use exactly this structure:
+
+
+{
+    "hooks": [
+        "Hook 1",
+        "Hook 2",
+        "Hook 3",
+        "Hook 4",
+        "Hook 5"
+    ],
+
+    "script": "60 second natural spoken Tamil script",
+
+    "scenes": [
+        "Scene 1",
+        "Scene 2",
+        "Scene 3",
+        "Scene 4",
+        "Scene 5"
+    ],
+
+    "caption": "Tamil social media caption",
+
+    "thumbnail": [
+        "Thumbnail text 1",
+        "Thumbnail text 2",
+        "Thumbnail text 3"
+    ],
+
+    "titles": [
+        "Title 1",
+        "Title 2",
+        "Title 3"
+    ],
+
+    "hashtags": [
+        "#Tamil",
+        "#TamilCreator",
+        "#RelevantHashtag"
+    ],
+
+    "ideas": [
+        "Follow-up idea 1",
+        "Follow-up idea 2",
+        "Follow-up idea 3"
+    ]
+}
+
+`;
+
+
+
+                // ===========================================
+                // CALL FIREBASE AI
+                // ===========================================
+
+                const aiText =
+                    await generateAIContent(
+                        prompt
+                    );
+
+
+
+                // ===========================================
+                // PARSE AI RESPONSE
+                // ===========================================
+
+                const data =
+                    parseAIResponse(
+                        aiText
+                    );
+
+
+
+                // ===========================================
+                // DISPLAY RESULT
+                // ===========================================
+
+                displayResult(
+                    data
+                );
+
+
+
+                // ===========================================
+                // SUCCESS
+                // ===========================================
+
+                showSuccessModal();
+
+
+
+            } catch (error) {
+
+
+                console.error(
+                    "VANIKIO AI ERROR:",
+                    error
+                );
+
+
+                showErrorModal(
+
+                    "We couldn't generate your content.",
+
+                    error?.message ||
+                    "Please try again."
+
+                );
+
+
+            } finally {
+
+
+                generateBtn.disabled =
+                    false;
+
+            }
+
+        }
+
+    );
+
+
+
+    // ========================================================
+    // Parse AI Response
+    // ========================================================
+
+    function parseAIResponse(
+        aiText
+    ) {
+
+
+        if (!aiText) {
+
+            throw new Error(
+                "The AI returned an empty response."
+            );
+
+        }
+
+
+        let cleaned =
+            aiText.trim();
+
+
+
+        // Remove markdown code block if model adds it.
+
+        cleaned =
+            cleaned.replace(
+                /^```json\s*/i,
+                ""
+            );
+
+
+        cleaned =
+            cleaned.replace(
+                /^```\s*/i,
+                ""
+            );
+
+
+        cleaned =
+            cleaned.replace(
+                /\s*```$/i,
+                ""
+            );
+
+
+        cleaned =
+            cleaned.trim();
+
+
+
+        try {
+
+            return JSON.parse(
+                cleaned
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Invalid AI JSON:",
+                aiText
+            );
+
+            throw new Error(
+                "The AI returned an invalid content format."
+            );
+
+        }
+
+    }
+
+
+
+    // ========================================================
+    // Display Result
+    // ========================================================
+
+    function displayResult(
+        data
+    ) {
+
+
+        document.getElementById(
+            "hooks"
+        ).textContent =
+            formatList(
+                data.hooks
+            );
+
+
+        document.getElementById(
+            "script"
+        ).textContent =
+            data.script ||
+            "";
+
+
+        document.getElementById(
+            "scenes"
+        ).textContent =
+            formatList(
+                data.scenes
+            );
+
+
+        document.getElementById(
+            "caption"
+        ).textContent =
+            data.caption ||
+            "";
+
+
+        document.getElementById(
+            "thumbnail"
+        ).textContent =
+            formatList(
+                data.thumbnail
+            );
+
+
+        document.getElementById(
+            "titles"
+        ).textContent =
+            formatList(
+                data.titles
+            );
+
+
+        document.getElementById(
+            "hashtags"
+        ).textContent =
+            formatList(
+                data.hashtags
+            );
+
+
+        document.getElementById(
+            "ideas"
+        ).textContent =
+            formatList(
+                data.ideas
+            );
+
+
+        // Show result only after successful AI generation.
+
+        result.style.display =
+            "block";
+
+
+        // Scroll to generated content.
+
+        setTimeout(
+            () => {
+
+                result.scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "start"
+
+                });
+
+            },
+            100
+        );
+
+    }
+
+
+
+    // ========================================================
+    // Format List
+    // ========================================================
+
+    function formatList(
+        items
+    ) {
+
+
+        if (!Array.isArray(items)) {
+
+            return items || "";
+
+        }
+
+
+        return items
+            .map(
+                (
+                    item,
+                    index
+                ) => {
+
+                    return `${index + 1}. ${item}`;
+
+                }
+            )
+            .join(
+                "\n\n"
+            );
+
+    }
+
+
+
+    // ========================================================
+    // Save Prompt
+    // ========================================================
+
+    savePromptBtn.addEventListener(
+
+        "click",
+
+        () => {
+
+
+            const value =
+                topic.value.trim();
+
+
+
+            if (!value) {
+
+                showErrorModal(
+                    "Enter a content idea before saving."
+                );
+
+                return;
+
+            }
+
+
+            window.location.href =
+                "prompts.html?new=" +
+                encodeURIComponent(
+                    value
+                );
+
+        }
+
+    );
+
+
+
+    // ========================================================
+    // Loading Modal
+    // ========================================================
+
+    function showLoadingModal() {
+
+
+        modalBackdrop.classList.add(
+            "show"
+        );
+
+
+        modalIcon.className =
+            "modal-icon loading";
+
+
+        spinner.style.display =
+            "block";
+
+
+        modalTitle.textContent =
+            "Creating your content";
+
+
+        modalMessage.textContent =
+            "VANIKIO is generating your Tamil content. Please wait...";
+
+
+        errorDetails.style.display =
+            "none";
+
+
+        modalButton.style.display =
+            "none";
+
+    }
+
+
+
+    // ========================================================
+    // Success Modal
+    // ========================================================
+
+    function showSuccessModal() {
+
+
+        modalBackdrop.classList.add(
+            "show"
+        );
+
+
+        modalIcon.className =
+            "modal-icon success";
+
+
+        spinner.style.display =
+            "none";
+
+
+        modalIcon.textContent =
+            "✓";
+
+
+        modalTitle.textContent =
+            "Successfully generated";
+
+
+        modalMessage.textContent =
+            "Your Tamil content is ready below.";
+
+
+        errorDetails.style.display =
+            "none";
+
+
+        modalButton.textContent =
+            "View Content";
+
+
+        modalButton.style.display =
+            "block";
+
+
+        modalButton.onclick =
+            () => {
+
+                closeModal();
+
+                result.scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "start"
+
+                });
+
+            };
+
+    }
+
+
+
+    // ========================================================
+    // Error Modal
+    // ========================================================
+
+    function showErrorModal(
+        message,
+        details = ""
+    ) {
+
+
+        modalBackdrop.classList.add(
+            "show"
+        );
+
+
+        modalIcon.className =
+            "modal-icon error";
+
+
+        spinner.style.display =
+            "none";
+
+
+        modalIcon.textContent =
+            "!" ;
+
+
+        modalTitle.textContent =
+            "Something went wrong";
+
+
+        modalMessage.textContent =
+            message;
+
+
+        if (details) {
+
+            errorDetails.textContent =
+                details;
+
+            errorDetails.style.display =
+                "block";
+
+        } else {
+
+            errorDetails.style.display =
+                "none";
+
+        }
+
+
+        modalButton.textContent =
+            "Close";
+
+
+        modalButton.style.display =
+            "block";
+
+
+        modalButton.onclick =
+            () => {
+
+                closeModal();
+
+            };
+
+    }
+
+
+
+    // ========================================================
+    // Close Modal
+    // ========================================================
+
+    function closeModal() {
+
+        modalBackdrop.classList.remove(
+            "show"
+        );
+
+    }
+
+
+
+    // ========================================================
+    // Close Modal With Escape
+    // ========================================================
+
+    document.addEventListener(
+
+        "keydown",
+
+        (event) => {
+
+            if (
+                event.key === "Escape" &&
+                modalBackdrop.classList.contains("show")
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+
+    );
+
+
+
+    // ========================================================
+    // Load Prompt From URL
+    //
+    // prompts.html -> Use Prompt
+    // content_creation.html?prompt=...
+    // ========================================================
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const incomingPrompt =
+        params.get(
+            "prompt"
+        );
+
+
+    if (incomingPrompt) {
+
+        topic.value =
+            incomingPrompt;
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

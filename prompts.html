@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VANIKIO — My Prompts</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #f7f5ff;
+
+            color: #27243a;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .navbar {
+            height: 70px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            border-bottom: 1px solid #eeeaf8;
+        }
+
+        .logo {
+            font-size: 24px;
+
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #6c4cf1;
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav a {
+            font-size: 14px;
+            color: #625c70;
+        }
+
+        .container {
+            width: min(950px, 90%);
+            margin: auto;
+        }
+
+        .header {
+            padding: 55px 0 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #6b6577;
+        }
+
+        .new-btn {
+            border: none;
+
+            background: #6c4cf1;
+
+            color: white;
+
+            padding: 13px 18px;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .new-btn:hover {
+            background: #5938dc;
+        }
+
+        .save-box {
+            display: none;
+
+            background: white;
+
+            border: 1px solid #eeeaf8;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            margin-bottom: 20px;
+        }
+
+        .save-box.active {
+            display: block;
+        }
+
+        .save-box label {
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        .prompt-input {
+            width: 100%;
+
+            min-height: 110px;
+
+            resize: vertical;
+
+            padding: 14px;
+
+            border: 1px solid #ddd8eb;
+
+            border-radius: 12px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .prompt-input:focus {
+            border-color: #6c4cf1;
+        }
+
+        .save-actions {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 12px;
+        }
+
+        .save {
+            background: #6c4cf1;
+            color: white;
+        }
+
+        .cancel {
+            background: #eeeaf8;
+            color: #514b60;
+        }
+
+        .save-actions button {
+            border: none;
+
+            padding: 11px 17px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+        .message {
+            display: none;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            margin-bottom: 18px;
+
+            font-size: 14px;
+        }
+
+        .message.error {
+            background: #fff0f0;
+
+            color: #b42318;
+        }
+
+        .message.success {
+            background: #edfdf3;
+
+            color: #087443;
+        }
+
+        .prompt-list {
+            display: grid;
+
+            gap: 14px;
+
+            padding-bottom: 60px;
+        }
+
+        .prompt-card {
+            background: white;
+
+            border: 1px solid #eeeaf8;
+
+            border-radius: 18px;
+
+            padding: 21px;
+        }
+
+        .prompt-card-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 15px;
+        }
+
+        .prompt-title {
+            font-size: 17px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        .prompt-date {
+            font-size: 12px;
+
+            color: #90899d;
+        }
+
+        .prompt-text {
+            margin-top: 15px;
+
+            padding: 15px;
+
+            background: #f8f6fc;
+
+            border-radius: 12px;
+
+            color: #514b60;
+
+            line-height: 1.6;
+
+            white-space: pre-wrap;
+
+            font-size: 14px;
+        }
+
+        .card-actions {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 15px;
+        }
+
+        .card-actions button {
+            border: none;
+
+            padding: 9px 13px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+        .use-btn {
+            background: #ece7ff;
+
+            color: #5938dc;
+        }
+
+        .delete-btn {
+            background: #fff0f0;
+
+            color: #b42318;
+        }
+
+        .empty {
+            text-align: center;
+
+            padding: 70px 20px;
+
+            background: white;
+
+            border: 1px solid #eeeaf8;
+
+            border-radius: 20px;
+        }
+
+        .empty-icon {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+        .empty h2 {
+            margin-bottom: 8px;
+        }
+
+        .empty p {
+            color: #6b6577;
+
+            margin-bottom: 22px;
+        }
+
+        @media (max-width: 600px) {
+
+            .header {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .new-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        VANI<span>KIO</span>
+    </a>
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="content_creation.html">
+            Create
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <div class="container">
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+        <section class="header">
+
+            <div>
+
+                <h1>
+                    My Prompts
+                </h1>
+
+                <p>
+                    Save your favourite content ideas and reuse them.
+                </p>
+
+            </div>
+
+
+            <button
+                class="new-btn"
+                id="newPromptBtn"
+            >
+                + New Prompt
+            </button>
+
+        </section>
+
+
+<!-- =========================================================
+     MESSAGE
+========================================================= -->
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+
+<!-- =========================================================
+     SAVE BOX
+========================================================= -->
+
+        <section
+            id="saveBox"
+            class="save-box"
+        >
+
+            <label for="promptInput">
+                Prompt / Content Idea
+            </label>
+
+            <textarea
+                id="promptInput"
+                class="prompt-input"
+                placeholder="Example: Create a video explaining 5 mistakes small business owners make..."
+            ></textarea>
+
+
+            <div class="save-actions">
+
+                <button
+                    class="save"
+                    id="saveBtn"
+                >
+                    Save Prompt
+                </button>
+
+                <button
+                    class="cancel"
+                    id="cancelBtn"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </section>
+
+
+<!-- =========================================================
+     PROMPT LIST
+========================================================= -->
+
+        <section
+            id="promptList"
+            class="prompt-list"
+        ></section>
+
+    </div>
+
+</main>
+
+
+<script type="module">
+
+    import {
+
+        auth,
+
+        db,
+
+        onAuthStateChanged,
+
+        collection,
+
+        addDoc,
+
+        getDocs,
+
+        deleteDoc,
+
+        doc,
+
+        serverTimestamp
+
+    } from "./firebase.js";
+
+
+    // ========================================================
+    // Elements
+    // ========================================================
+
+    const newPromptBtn =
+        document.getElementById(
+            "newPromptBtn"
+        );
+
+    const saveBox =
+        document.getElementById(
+            "saveBox"
+        );
+
+    const promptInput =
+        document.getElementById(
+            "promptInput"
+        );
+
+    const saveBtn =
+        document.getElementById(
+            "saveBtn"
+        );
+
+    const cancelBtn =
+        document.getElementById(
+            "cancelBtn"
+        );
+
+    const promptList =
+        document.getElementById(
+            "promptList"
+        );
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    // ========================================================
+    // Current User
+    // ========================================================
+
+    let currentUser = null;
+
+
+    // ========================================================
+    // Auth State
+    // ========================================================
+
+    onAuthStateChanged(
+        auth,
+        async (user) => {
+
+            if (!user) {
+
+                showMessage(
+                    "Please login to save and view your prompts.",
+                    true
+                );
+
+                promptList.innerHTML = `
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            🔐
+                        </div>
+
+                        <h2>
+                            Login required
+                        </h2>
+
+                        <p>
+                            Your saved prompts belong to your VANIKIO account.
+                        </p>
+
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            currentUser =
+                user;
+
+
+            await loadPrompts();
+
+        }
+    );
+
+
+    // ========================================================
+    // New Prompt
+    // ========================================================
+
+    newPromptBtn.addEventListener(
+        "click",
+        () => {
+
+            saveBox.classList.add(
+                "active"
+            );
+
+            promptInput.focus();
+
+        }
+    );
+
+
+    // ========================================================
+    // Cancel
+    // ========================================================
+
+    cancelBtn.addEventListener(
+        "click",
+        () => {
+
+            closeSaveBox();
+
+        }
+    );
+
+
+    // ========================================================
+    // Save Prompt
+    // ========================================================
+
+    saveBtn.addEventListener(
+        "click",
+        async () => {
+
+            const text =
+                promptInput.value.trim();
+
+
+            if (!text) {
+
+                showMessage(
+                    "Please enter a prompt.",
+                    true
+                );
+
+                return;
+
+            }
+
+
+            if (!currentUser) {
+
+                showMessage(
+                    "Please login first.",
+                    true
+                );
+
+                return;
+
+            }
+
+
+            saveBtn.disabled =
+                true;
+
+            saveBtn.textContent =
+                "Saving...";
+
+
+            try {
+
+                const promptsRef =
+                    collection(
+                        db,
+                        "users",
+                        currentUser.uid,
+                        "prompts"
+                    );
+
+
+                await addDoc(
+                    promptsRef,
+                    {
+
+                        text:
+                            text,
+
+                        createdAt:
+                            serverTimestamp(),
+
+                        updatedAt:
+                            serverTimestamp()
+
+                    }
+                );
+
+
+                promptInput.value =
+                    "";
+
+                closeSaveBox();
+
+                showMessage(
+                    "Prompt saved successfully.",
+                    false
+                );
+
+
+                await loadPrompts();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showMessage(
+                    error.message ||
+                    "Unable to save prompt.",
+                    true
+                );
+
+            } finally {
+
+                saveBtn.disabled =
+                    false;
+
+                saveBtn.textContent =
+                    "Save Prompt";
+
+            }
+
+        }
+    );
+
+
+    // ========================================================
+    // Load Prompts
+    // ========================================================
+
+    async function loadPrompts() {
+
+        if (!currentUser) {
+            return;
+        }
+
+
+        promptList.innerHTML = `
+            <div class="empty">
+                Loading your prompts...
+            </div>
+        `;
+
+
+        try {
+
+            const promptsRef =
+                collection(
+                    db,
+                    "users",
+                    currentUser.uid,
+                    "prompts"
+                );
+
+
+            const snapshot =
+                await getDocs(
+                    promptsRef
+                );
+
+
+            if (snapshot.empty) {
+
+                promptList.innerHTML = `
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            💡
+                        </div>
+
+                        <h2>
+                            No saved prompts
+                        </h2>
+
+                        <p>
+                            Save your favourite content ideas here.
+                        </p>
+
+                        <button
+                            class="new-btn"
+                            onclick="document.getElementById('newPromptBtn').click()"
+                        >
+                            Create First Prompt
+                        </button>
+
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            const prompts =
+                snapshot.docs.map(
+                    item => ({
+
+                        id:
+                            item.id,
+
+                        ...item.data()
+
+                    })
+                );
+
+
+            prompts.sort(
+                (a, b) => {
+
+                    const aTime =
+                        a.createdAt?.seconds || 0;
+
+                    const bTime =
+                        b.createdAt?.seconds || 0;
+
+                    return bTime - aTime;
+
+                }
+            );
+
+
+            promptList.innerHTML =
+                "";
+
+
+            prompts.forEach(
+                prompt => {
+
+                    promptList.appendChild(
+                        createPromptCard(
+                            prompt
+                        )
+                    );
+
+                }
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            promptList.innerHTML = `
+                <div class="empty">
+
+                    <div class="empty-icon">
+                        ⚠️
+                    </div>
+
+                    <h2>
+                        Unable to load prompts
+                    </h2>
+
+                    <p>
+                        ${escapeHtml(error.message)}
+                    </p>
+
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    // ========================================================
+    // Create Prompt Card
+    // ========================================================
+
+    function createPromptCard(
+        prompt
+    ) {
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+        card.className =
+            "prompt-card";
+
+
+        const date =
+            prompt.createdAt
+                ? new Date(
+                    prompt.createdAt.seconds * 1000
+                ).toLocaleDateString()
+                : "Just now";
+
+
+        card.innerHTML = `
+
+            <div class="prompt-card-top">
+
+                <div>
+
+                    <div class="prompt-title">
+                        Content Idea
+                    </div>
+
+                    <div class="prompt-date">
+                        ${date}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="prompt-text">
+                ${escapeHtml(prompt.text)}
+            </div>
+
+
+            <div class="card-actions">
+
+                <button
+                    class="use-btn"
+                    data-id="${prompt.id}"
+                >
+                    Use Prompt
+                </button>
+
+                <button
+                    class="delete-btn"
+                    data-id="${prompt.id}"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        `;
+
+
+        card.querySelector(
+            ".use-btn"
+        ).addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "content_creation.html?prompt=" +
+                    encodeURIComponent(
+                        prompt.text
+                    );
+
+            }
+        );
+
+
+        card.querySelector(
+            ".delete-btn"
+        ).addEventListener(
+            "click",
+            async () => {
+
+                const confirmed =
+                    confirm(
+                        "Delete this prompt?"
+                    );
+
+
+                if (!confirmed) {
+                    return;
+                }
+
+
+                try {
+
+                    await deleteDoc(
+                        doc(
+                            db,
+                            "users",
+                            currentUser.uid,
+                            "prompts",
+                            prompt.id
+                        )
+                    );
+
+
+                    await loadPrompts();
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    showMessage(
+                        "Unable to delete prompt.",
+                        true
+                    );
+
+                }
+
+            }
+        );
+
+
+        return card;
+
+    }
+
+
+    // ========================================================
+    // URL Prompt
+    //
+    // content_creation.html?prompt=...
+    // ========================================================
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const incomingPrompt =
+        params.get("new");
+
+
+    if (incomingPrompt) {
+
+        saveBox.classList.add(
+            "active"
+        );
+
+        promptInput.value =
+            incomingPrompt;
+
+    }
+
+
+    // ========================================================
+    // Close Save Box
+    // ========================================================
+
+    function closeSaveBox() {
+
+        saveBox.classList.remove(
+            "active"
+        );
+
+    }
+
+
+    // ========================================================
+    // Message
+    // ========================================================
+
+    function showMessage(
+        text,
+        isError
+    ) {
+
+        message.textContent =
+            text;
+
+        message.className =
+            "message " +
+            (
+                isError
+                    ? "error"
+                    : "success"
+            );
+
+        message.style.display =
+            "block";
+
+
+        setTimeout(
+            () => {
+
+                message.style.display =
+                    "none";
+
+            },
+            4000
+        );
+
+    }
+
+
+    // ========================================================
+    // HTML Escape
+    // ========================================================
+
+    function escapeHtml(
+        value
+    ) {
+
+        return String(value)
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
