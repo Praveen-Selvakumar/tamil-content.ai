@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
 
     <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
     >
 
     <title>VANIKIO — Create Content</title>
@@ -690,8 +690,8 @@
 <header class="navbar">
 
     <a
-        href="index.html"
-        class="logo"
+            href="index.html"
+            class="logo"
     >
         VANI<span>KIO</span>
     </a>
@@ -751,8 +751,8 @@
 
 
             <textarea
-                id="topic"
-                placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
+                    id="topic"
+                    placeholder="Example: I want to make a video explaining why small businesses should use WhatsApp Business..."
             ></textarea>
 
 
@@ -841,8 +841,8 @@
 
 
                 <button
-                    class="generate"
-                    id="generateBtn"
+                        class="generate"
+                        id="generateBtn"
                 >
 
                     ✨ Generate Content
@@ -851,8 +851,8 @@
 
 
                 <button
-                    class="save-prompt"
-                    id="savePromptBtn"
+                        class="save-prompt"
+                        id="savePromptBtn"
                 >
 
                     💾 Save Prompt
@@ -872,8 +872,8 @@
         ================================================== -->
 
         <section
-            class="result"
-            id="result"
+                class="result"
+                id="result"
         >
 
 
@@ -892,8 +892,8 @@
                 </h3>
 
                 <div
-                    id="hooks"
-                    class="result-content"
+                        id="hooks"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -909,8 +909,8 @@
                 </h3>
 
                 <div
-                    id="script"
-                    class="result-content"
+                        id="script"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -926,8 +926,8 @@
                 </h3>
 
                 <div
-                    id="scenes"
-                    class="result-content"
+                        id="scenes"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -943,8 +943,8 @@
                 </h3>
 
                 <div
-                    id="caption"
-                    class="result-content"
+                        id="caption"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -960,8 +960,8 @@
                 </h3>
 
                 <div
-                    id="thumbnail"
-                    class="result-content"
+                        id="thumbnail"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -977,8 +977,8 @@
                 </h3>
 
                 <div
-                    id="titles"
-                    class="result-content"
+                        id="titles"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -994,8 +994,8 @@
                 </h3>
 
                 <div
-                    id="hashtags"
-                    class="result-content"
+                        id="hashtags"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -1011,8 +1011,8 @@
                 </h3>
 
                 <div
-                    id="ideas"
-                    class="result-content"
+                        id="ideas"
+                        class="result-content"
                 ></div>
 
             </div>
@@ -1031,8 +1031,8 @@
 ========================================================= -->
 
 <div
-    class="modal-backdrop"
-    id="modalBackdrop"
+        class="modal-backdrop"
+        id="modalBackdrop"
 >
 
 
@@ -1040,13 +1040,13 @@
 
 
         <div
-            class="modal-icon loading"
-            id="modalIcon"
+                class="modal-icon loading"
+                id="modalIcon"
         >
 
             <div
-                class="spinner"
-                id="spinner"
+                    class="spinner"
+                    id="spinner"
             ></div>
 
         </div>
@@ -1063,15 +1063,15 @@
 
 
         <div
-            class="error-details"
-            id="errorDetails"
+                class="error-details"
+                id="errorDetails"
         ></div>
 
 
         <button
-            class="modal-button"
-            id="modalButton"
-            style="display:none;"
+                class="modal-button"
+                id="modalButton"
+                style="display:none;"
         >
             Continue
         </button>
@@ -1237,112 +1237,30 @@
                 // AI PROMPT
                 // ===========================================
 
-                const prompt = `
+          const prompt=`Create concise bilingual Tamil creator content.
 
-You are VANIKIO, an AI assistant specifically designed
-for Tamil content creators.
+Idea:${userTopic}
+Platform:${platform.value}
+Style:${style.value}
 
-The creator wants to create content about:
-
-${userTopic}
-
-Platform:
-
-${platform.value}
-
-Content style:
-
-${style.value}
-
-
-Your job is to transform this idea into a complete
-Tamil creator content package.
-
-
-IMPORTANT RULES:
-
-1. Write natural spoken Tamil.
-
-2. Do not use overly formal or literary Tamil.
-
-3. Make the content sound like a real Tamil creator
-   speaking to their audience.
-
-4. Tamil + English words are allowed when natural.
-
-5. Do not invent statistics, facts, studies, numbers,
-   quotes or claims.
-
-6. Keep the content useful and engaging.
-
-7. The script should be approximately suitable for
-   a 60-second short-form video.
-
-8. Hooks should be different from each other.
-
-9. Scene suggestions should tell the creator what
-   they could show while speaking.
-
-10. Follow-up ideas should logically relate to the
-    original topic.
-
-
-RETURN ONLY VALID JSON.
-
-DO NOT use markdown.
-
-DO NOT put the JSON inside a code block.
-
-Use exactly this structure:
-
+Every generated text MUST contain BOTH simple English and natural spoken Tamil.
+Format each item: English / தமிழ்
+Do not generate English-only or Tamil-only text.
+Keep all output short, useful and engaging.
+Script: suitable for ~60 seconds.
+No invented facts, statistics, quotes or claims.
+Return ONLY valid JSON. No markdown.
 
 {
-    "hooks": [
-        "Hook 1",
-        "Hook 2",
-        "Hook 3",
-        "Hook 4",
-        "Hook 5"
-    ],
-
-    "script": "60 second natural spoken Tamil script",
-
-    "scenes": [
-        "Scene 1",
-        "Scene 2",
-        "Scene 3",
-        "Scene 4",
-        "Scene 5"
-    ],
-
-    "caption": "Tamil social media caption",
-
-    "thumbnail": [
-        "Thumbnail text 1",
-        "Thumbnail text 2",
-        "Thumbnail text 3"
-    ],
-
-    "titles": [
-        "Title 1",
-        "Title 2",
-        "Title 3"
-    ],
-
-    "hashtags": [
-        "#Tamil",
-        "#TamilCreator",
-        "#RelevantHashtag"
-    ],
-
-    "ideas": [
-        "Follow-up idea 1",
-        "Follow-up idea 2",
-        "Follow-up idea 3"
-    ]
-}
-
-`;
+"hooks":["English / தமிழ்","English / தமிழ்","English / தமிழ்"],
+"script":"English / தமிழ்...",
+"scenes":["English / தமிழ்","English / தமிழ்","English / தமிழ்"],
+"caption":"English / தமிழ்",
+"thumbnail":["English / தமிழ்","English / தமிழ்"],
+"titles":["English / தமிழ்","English / தமிழ்","English / தமிழ்"],
+"hashtags":["#TamilCreator","#ContentCreator"],
+"ideas":["English / தமிழ்","English / தமிழ்","English / தமிழ்"]
+}`;
 
 
 
